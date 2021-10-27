@@ -75,7 +75,7 @@ export default {
         },
         closeMobileMenu(){
             this.isBurgerActive = false
-            console.log(this.isBurgerActive)
+            // console.log(this.isBurgerActive)
         }
     },
 

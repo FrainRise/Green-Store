@@ -61,13 +61,13 @@ export default {
         ...mapActions({
             fetchAllProducts: 'fetchAllProducts'
         }), 
-        handleClick(value) {
+        async handleClick(value) {
             let item = {
                 id: value.id
             }
             
             try {
-                this.$store.dispatch('fetchProductInfo', item)
+                await this.$store.dispatch('fetchProductInfo', item)
                 this.$store.commit('setInfoDialog', true)
                 this.isLoadedData = true
                 setTimeout(() => {
@@ -95,11 +95,9 @@ export default {
                 : this.$store.getters.SEARCHPRODUCT
         }
     },
-    mounted() {
-        setTimeout(() => {
-            this.fetchAllProducts()
-            this.isLoadedList = true  
-        }, 1500)      
+    async mounted() {
+        await this.fetchAllProducts()
+        this.isLoadedList = true       
     },
 }
 </script>

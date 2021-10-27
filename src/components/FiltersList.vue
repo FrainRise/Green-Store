@@ -28,7 +28,7 @@ export default {
     },
     methods: {
         filterBy(type) {
-            if(this.currentCategory === type ) {
+            if(this.currentCategory === type) {
                 this.currentCategory = ''
                 this.$store.commit('filterSwitcher', false)
             } else {
@@ -43,7 +43,11 @@ export default {
             return category === this.currentCategory
         }
     },
-
+    destroyed() {
+        this.currentCategory = ''
+        this.$store.commit('filterSwitcher', false)
+        this.$store.commit('updateSearchQuery', '')
+    }
 }
 </script>
 

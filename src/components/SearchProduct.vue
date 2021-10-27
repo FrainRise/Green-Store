@@ -3,7 +3,7 @@
         <input 
             type="text" 
             class="search" 
-            placeholder="Search here..."
+            placeholder="Search by name..."
             v-model="searchQuery"
             :disabled="isFilterActive"
         />
@@ -55,6 +55,7 @@ export default {
 
     .btn__search {
         background-color: #43ad15;
+        outline: none;
     }
 
     .search:disabled + .btn__search {

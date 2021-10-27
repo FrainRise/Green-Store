@@ -61,8 +61,8 @@ export default {
             recentProducts: state => state.recentProducts
         }),
     },
-    mounted() {
-        this.fetchRecentProducts()
+    async mounted() {
+        await this.fetchRecentProducts()
         this.isLoaded = true  
     },
 }

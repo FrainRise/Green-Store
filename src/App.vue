@@ -34,6 +34,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  overflow-x: hidden;
 }
 
 @media (min-width: 320px) and (max-width: 639px) {

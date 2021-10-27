@@ -17,14 +17,14 @@
                     class="form-input firstname" 
                     placeholder="First Name"
                     v-model="firstname"
-                     
+                     required
                 />
                 <input 
                     type="text" 
                     class="form-input lastname" 
                     placeholder="Last Name"
                     v-model="lastname"
-                    
+                    required
                 />
             </div>
             <div class="fields">
@@ -32,11 +32,11 @@
                     <h4 class="fields-title">Phone Number</h4>
                     <input 
                         type="tel"
-                        pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" 
+                        pattern="[0-9]{3}[0-9]{3}[0-9]{4}" 
                         class="form-input phone" 
-                        placeholder="000-000-0000"
+                        placeholder="(000)-000-0000"
                         v-model="phoneNumber"
-                        
+                        required
                     />
                 </div>
                 <div class="fields-email">
@@ -46,7 +46,7 @@
                         class="form-input email" 
                         placeholder="Email"
                         v-model="email"
-                        
+                        required
                     />
                 </div>
             </div>
@@ -58,14 +58,14 @@
                     class="form-input street-address" 
                     placeholder="Street address"
                     v-model="streetAddress"
-                    
+                    required
                 />
                 <input 
                     type="text" 
                     class="form-input street-address-second" 
                     placeholder="Street address line 2"
                     v-model="streetAddressSecond"
-                    
+                    required
                 />
                 <div class="city-state">
                     <input 
@@ -73,14 +73,14 @@
                         class="form-input city" 
                         placeholder="City"
                         v-model="city"
-                        
+                        required
                     />
                     <input 
                         type="text" 
                         class="form-input state" 
                         placeholder="State / Province"
                         v-model="state"
-                        
+                        required
                     />
                 </div>
                 <input 
@@ -88,7 +88,7 @@
                     class="form-input postal-code" 
                     placeholder="Postal / Zip code"
                     v-model="zipCode"
-                    
+                    required
                 />
             </div>
         </section>
@@ -289,7 +289,6 @@ export default {
         width: 95%;
 
         .form-header {
-
             &__title {
                 font-size: 1.6rem;
             }
