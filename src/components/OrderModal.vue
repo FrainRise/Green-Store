@@ -1,71 +1,73 @@
 <template>
-    <div class="modal-wrapper">
-        <div class="modal">
-            <div class="check-tab" v-if="!isDataConfirmed">
-                <span 
-                    class="close-marker"
-                    @click="closeModal"
-                >&#10005;</span>
-                <header class="modal-header">
-                    <h2 class="modal-header__title title">
-                        Confirm your order
-                    </h2>
-                    <p class="modal-header__descr">
-                        Check the whole information about order
-                    </p>
-                </header>
-                <section class="modal-body">
-                    <h2 class="modal-body__title title">Personal Information</h2>
-                    <div class="user-info">
-                        <p><strong>Full name:</strong> {{ order.fullname }}</p>
-                        <p><strong>Phone number:</strong> {{ order.phoneNumber }}</p>
-                        <p><strong>Email:</strong> {{ order.email }}</p>
-                        <p><strong>Street address:</strong> {{ order.streetAddress }}</p>
-                        <p><strong>Area:</strong> {{ order.area }}</p>
-                        <p><strong>Zip code:</strong> {{ order.zipCode }}</p>
-                    </div>
-                    <h2 class="modal-body__title title">Order</h2>
-                    <div class="products-list">
-                        <div 
-                            class="products-list__item"
-                            v-for="product in productList"
-                            :key="product.id"
-                        >
-                            <div class="image-wrapper">
-                                <img :src="product.image" alt=""> 
-                            </div>
-                            <div class="info-wrapper">
-                                <h4 class="product-name info">{{ product.title }}</h4>
-                                <p class="product-category info">{{ product.category }}</p>
-                                <p class="product-category info">Quantity: {{ product.quantity }}</p>
-                                <h4 class="product-price info">{{ product.totalPrice }}$</h4>
-                            </div>
-                        </div>
-                        <h2 class="price-title title">The Entire price is: {{ totalPrice }}$</h2>
-                    </div>
-                </section>
-                <footer class="modal-footer">
-                    <button
-                        class="btn__confirm"
-                        @click="confirmOrder"
-                    >
-                        Confirm
-                    </button>
-                </footer>
-            </div>
-            <div class="confirm-tab" v-else>
-                <router-link to="/home" style="color: #000">
+    <transition name="wrapper-fade" appear>
+        <div class="modal-wrapper">
+            <div class="modal">
+                <div class="check-tab" v-if="!isDataConfirmed">
                     <span 
                         class="close-marker"
+                        @click="closeModal"
                     >&#10005;</span>
-                </router-link>
-                <img src="@/assets/order.png" alt="">
-                <h2 class="confirm-tab__title">
-                    Thank you for Trust!
-                </h2>
+                    <header class="modal-header">
+                        <h2 class="modal-header__title title">
+                            Confirm your order
+                        </h2>
+                        <p class="modal-header__descr">
+                            Check the whole information about order
+                        </p>
+                    </header>
+                    <section class="modal-body">
+                        <h2 class="modal-body__title title">Personal Information</h2>
+                        <div class="user-info">
+                            <p><strong>Full name:</strong> {{ order.fullname }}</p>
+                            <p><strong>Phone number:</strong> {{ order.phoneNumber }}</p>
+                            <p><strong>Email:</strong> {{ order.email }}</p>
+                            <p><strong>Street address:</strong> {{ order.streetAddress }}</p>
+                            <p><strong>Area:</strong> {{ order.area }}</p>
+                            <p><strong>Zip code:</strong> {{ order.zipCode }}</p>
+                        </div>
+                        <h2 class="modal-body__title title">Order</h2>
+                        <div class="products-list">
+                            <div 
+                                class="products-list__item"
+                                v-for="product in productList"
+                                :key="product.id"
+                            >
+                                <div class="image-wrapper">
+                                    <img :src="product.image" alt=""> 
+                                </div>
+                                <div class="info-wrapper">
+                                    <h4 class="product-name info">{{ product.title }}</h4>
+                                    <p class="product-category info">{{ product.category }}</p>
+                                    <p class="product-category info">Quantity: {{ product.quantity }}</p>
+                                    <h4 class="product-price info">{{ product.totalPrice }}$</h4>
+                                </div>
+                            </div>
+                            <h2 class="price-title title">The Entire price is: {{ totalPrice }}$</h2>
+                        </div>
+                    </section>
+                    <footer class="modal-footer">
+                        <button
+                            class="btn__confirm"
+                            @click="confirmOrder"
+                        >
+                            Confirm
+                        </button>
+                    </footer>
+                </div>
+                <div class="confirm-tab" v-else>
+                    <router-link to="/home" style="color: #000">
+                        <span 
+                            class="close-marker"
+                        >&#10005;</span>
+                    </router-link>
+                    <img src="@/assets/order.png" alt="">
+                    <h2 class="confirm-tab__title">
+                        Thank you for Trust!
+                    </h2>
+                </div>
             </div>
         </div>
-    </div>
+    </transition>
 </template>
 
 <script>
@@ -102,6 +104,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+/* animations */
+.wrapper-fade-enter-active, .wrapper-fade-leave-active {
+  transition: opacity 1s ease;
+}
+
+.wrapper-fade-enter, .wrapper-fade-leave-to {
+  opacity: 0;
+}
+
 /* main component styles */
 .modal-wrapper {
     position: fixed;

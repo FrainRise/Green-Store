@@ -17,14 +17,14 @@
                     class="form-input firstname" 
                     placeholder="First Name"
                     v-model="firstname"
-                     required
+                     
                 />
                 <input 
                     type="text" 
                     class="form-input lastname" 
                     placeholder="Last Name"
                     v-model="lastname"
-                    required
+                    
                 />
             </div>
             <div class="fields">
@@ -36,7 +36,7 @@
                         class="form-input phone" 
                         placeholder="000-000-0000"
                         v-model="phoneNumber"
-                        required
+                        
                     />
                 </div>
                 <div class="fields-email">
@@ -46,7 +46,7 @@
                         class="form-input email" 
                         placeholder="Email"
                         v-model="email"
-                        required
+                        
                     />
                 </div>
             </div>
@@ -58,14 +58,14 @@
                     class="form-input street-address" 
                     placeholder="Street address"
                     v-model="streetAddress"
-                    required
+                    
                 />
                 <input 
                     type="text" 
                     class="form-input street-address-second" 
                     placeholder="Street address line 2"
                     v-model="streetAddressSecond"
-                    required
+                    
                 />
                 <div class="city-state">
                     <input 
@@ -73,14 +73,14 @@
                         class="form-input city" 
                         placeholder="City"
                         v-model="city"
-                        required
+                        
                     />
                     <input 
                         type="text" 
                         class="form-input state" 
                         placeholder="State / Province"
                         v-model="state"
-                        required
+                        
                     />
                 </div>
                 <input 
@@ -88,7 +88,7 @@
                     class="form-input postal-code" 
                     placeholder="Postal / Zip code"
                     v-model="zipCode"
-                    required
+                    
                 />
             </div>
         </section>

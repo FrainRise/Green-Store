@@ -7,32 +7,34 @@
             <SidebarPL />
             <div class="products-wrapper" >
                 <MyLoader v-if="!isLoadedList" />
-                <div class="products-list" v-else>
-                    <div 
-                        v-for="product in listOfProducts"
-                        :key="product.productCode"
-                        class="products-list__item"
-                        :class="addedToCart(product) ? 'added': ''"
-                        @click="handleClick(product)"
-                    >
-                        <img :src="product.image" :alt="product.title">
-                        <footer>
-                            <span class="stock-marker">{{ isProductInStock(product) }}</span>
-                            <span class="price-marker">{{ product.price }}$</span>
-                            <h6 class="product-name">{{ product.title }}</h6>
-                            <span
-                                class="added-marker"
-                                v-if="addedToCart(product)"
-                            >&#10003;</span>
-                        </footer>
+                <transition name="products-fade" appear v-else>
+                    <div class="products-list" >
+                        <div 
+                            v-for="product in listOfProducts"
+                            :key="product.productCode"
+                            class="products-list__item"
+                            :class="addedToCart(product) ? 'added': ''"
+                            @click="handleClick(product)"
+                        >
+                            <img :src="product.image" :alt="product.title">
+                            <footer>
+                                <span class="stock-marker">{{ isProductInStock(product) }}</span>
+                                <span class="price-marker">{{ product.price }}$</span>
+                                <h6 class="product-name">{{ product.title }}</h6>
+                                <span
+                                    class="added-marker"
+                                    v-if="addedToCart(product)"
+                                >&#10003;</span>
+                            </footer>
+                        </div>
+                        <InfoModal 
+                            v-if="isLoadedData"
+                            :isLoadedInfo="isLoadedInfo"
+                        />
                     </div>
-                    <InfoModal 
-                        v-if="isLoadedData"
-                        :isLoadedInfo="isLoadedInfo"
-                    />
-                </div>
+                </transition>   
             </div>
-            
+             
         </div>
     </div>
 </template>
@@ -103,6 +105,16 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+/* animations */
+.products-fade-enter-active, .products-fade-leave-active {
+  transition: all 2s ease;
+  
+}
+.products-fade-enter, .products-fade-leave-to {
+  opacity: 0;
+  transform: translateX(150px);
+}
+/* main component styles */
 .products {
     margin-top: 100px;
 }

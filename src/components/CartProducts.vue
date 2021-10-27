@@ -3,7 +3,7 @@
         <header class="cart-products__header">
             Your Cart ({{ cart.length }})
         </header>
-        <transition-group tag="div" class="list-wrapper" name="slide-fade">
+        <transition-group  class="list-wrapper" name="slide-left" appear>
             <section 
                 class="cart-products__list" 
                 v-for="(product, index) in cart"
@@ -58,18 +58,17 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-/* slide-fade animation */
-
-.slide-fade-leave-active {
-    transition: all .3s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+/* animations */
+.slide-left-enter-active, .slide-left-leave-active {
+  transition: all 1s ease;
 }
 
-.slide-fade-leave-to {
-    transform: translateX(18px);
-    opacity: 0;
+.slide-left-enter, .slide-left-leave-to {
+  opacity: 0;
+  transform: translateX(-150px);
 }
 
-/* component main styles */
+/* main component styles */
 .cart-products {
     width: 80%;
     color: #000;

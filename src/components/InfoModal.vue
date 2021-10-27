@@ -1,80 +1,81 @@
 <template>
-    <div class="modal-wrapper" v-if="dialog">
-        <!-- v-if="isProductAdded" -->
-        <ProductPopup 
-            :info="info"
-            :closePopup="closePopup" 
-            v-if="isProductAdded"
-        />
-        <div class="modal-body" v-if="isLoadedInfo">
-            <button class="btn__close" @click="closeDialog">Close</button>
+    <transition name="modal-fade" appear>
+        <div class="modal-wrapper" v-if="dialog">
+            <ProductPopup 
+                :info="info"
+                :closePopup="closePopup" 
+                v-if="isProductAdded"
+            />
+            <div class="modal-body" v-if="isLoadedInfo">
+                <button class="btn__close" @click="closeDialog">Close</button>
 
-            <div class="image-wrapper">
-                <img :src="info.image" :alt="info.title">
-            </div>
-            <div class="info-wrapper">
-                <h3 class="info-wrapper__category">
-                    {{ info.category }}
-                </h3>
-                <h4 class="info-wrapper__title">
-                    {{ info.title }}
-                </h4>
-                <div class="info-wrapper__about">
-                    <h2 class="about__title">About</h2>
-                    <p class="about__descrp">
-                        {{ info.description }}
-                    </p>
+                <div class="image-wrapper">
+                    <img :src="info.image" :alt="info.title">
                 </div>
-                <h2 class="info-wrapper__price">
-                    {{ info.price }} $
-                </h2>
-                <div class="info-wrapper__additional">
-                    <h4 class="additional__available">
-                        Availability: 
-                        <span class="stock">
-                            {{ availability }}
-                        </span>
+                <div class="info-wrapper">
+                    <h3 class="info-wrapper__category">
+                        {{ info.category }}
+                    </h3>
+                    <h4 class="info-wrapper__title">
+                        {{ info.title }}
                     </h4>
-                    <h4 class="additional__rate">
-                        Rate: 
-                        <span class="rate" :style="rateColorized">
-                            {{ info.rating.rate }}
-                        </span>
-                    </h4>
-                </div>
-                <div 
-                    class="btn-wrapper"
-                    v-if="!isCartHasProduct(info)"
-                >
-                    <div class="quantity-wrapper">
-                        <h4 class="quantity-label">Quantity: </h4>
-                        <input 
-                            type="text" 
-                            class="quantity" 
-                            v-model="productQuantity" 
-                        />
+                    <div class="info-wrapper__about">
+                        <h2 class="about__title">About</h2>
+                        <p class="about__descrp">
+                            {{ info.description }}
+                        </p>
                     </div>
-                    <button 
-                        class="btn__add" 
-                        @click="addToCart(info)"
+                    <h2 class="info-wrapper__price">
+                        {{ info.price }} $
+                    </h2>
+                    <div class="info-wrapper__additional">
+                        <h4 class="additional__available">
+                            Availability: 
+                            <span class="stock">
+                                {{ availability }}
+                            </span>
+                        </h4>
+                        <h4 class="additional__rate">
+                            Rate: 
+                            <span class="rate" :style="rateColorized">
+                                {{ info.rating.rate }}
+                            </span>
+                        </h4>
+                    </div>
+                    <div 
+                        class="btn-wrapper"
+                        v-if="!isCartHasProduct(info)"
                     >
-                        Add to Cart
-                    </button>
-                    
+                        <div class="quantity-wrapper">
+                            <h4 class="quantity-label">Quantity: </h4>
+                            <input 
+                                type="text" 
+                                class="quantity" 
+                                v-model="productQuantity" 
+                            />
+                        </div>
+                        <button 
+                            class="btn__add" 
+                            @click="addToCart(info)"
+                        >
+                            Add to Cart
+                        </button>
+                        
+                    </div>
+                    <h4 v-else class="info__redirect">
+                        <router-link class="info__redirect-link" to="/cart">
+                            Already in Cart
+                        </router-link>
+                    </h4>
                 </div>
-                <h4 v-else class="info__redirect">
-                    <router-link class="info__redirect-link" to="/cart">
-                        Already in Cart
-                    </router-link>
-                </h4>
             </div>
+            <MyLoader 
+                class="modal-loader"
+                v-else
+                :color="loaderTxtColor"
+            />
         </div>
-        <MyLoader 
-            class="modal-loader"
-            v-else
-            :color="loaderTxtColor"
-        />
-    </div>
+    </transition>
 </template>
 
 <script>
@@ -148,6 +149,16 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+/* animations */
+.modal-fade-enter-active, .modal-fade-leave-active {
+  transition: opacity .5s ease;
+}
+
+.modal-fade-enter, .modal-fade-leave-to {
+  opacity: 0;
+}
+
+/* main component styles */
 .modal-wrapper {
     position: fixed;
     top: 0; left: 0; 

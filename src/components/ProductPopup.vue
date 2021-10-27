@@ -1,5 +1,5 @@
 <template>
-<transition name="slide-fade">
+<transition name="slide-fade" appear>
     <div class="popup">
         <header class="popup-header">
             <h4 class="header__title"><span class="confirm-marker">&#10003;</span>Added to cart</h4>
@@ -53,11 +53,11 @@ export default {
 <style lang="scss" scoped>
 /* popup fade in and fade out animation */
 .slide-fade-enter-active {
-    transition: all .3s ease;
+    transition: all .8s ease;
 }
 
 .slide-fade-leave-active {
-  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+    transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
 }
 
 .slide-fade-enter, 

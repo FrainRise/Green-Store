@@ -1,34 +1,36 @@
 <template>
-    <div class="summary">
-        <aside class="summary-cart">
-            <header>
-                <h2 class="header-title title">Summary</h2>
-                <hr class="divine-line" />
-            </header>
-            <section>
-                <div class="total-wrapper">
-                    <h2 class="summary-title title">Total: </h2>
-                    <h2 class="total-title title">{{totalSum}}$</h2>
-                </div>
-                
-                <hr class="divine-line" />
-            </section>
-            <footer>
-                <button 
-                    class="btn__pay"
-                    :disabled="!cart.length" 
-                >   
-                    <router-link 
-                        :event="cart.length ? 'click': ''"
-                        to="/cart/order"
-                        class="btn__pay-label"
-                    >
-                        Checkout
-                    </router-link>
-                </button>
-            </footer>
-        </aside>
-    </div>
+    <transition name="slide-right" appear>
+        <div class="summary">
+            <aside class="summary-cart">
+                <header>
+                    <h2 class="header-title title">Summary</h2>
+                    <hr class="divine-line" />
+                </header>
+                <section>
+                    <div class="total-wrapper">
+                        <h2 class="summary-title title">Total: </h2>
+                        <h2 class="total-title title">{{totalSum}}$</h2>
+                    </div>
+                    
+                    <hr class="divine-line" />
+                </section>
+                <footer>
+                    <button 
+                        class="btn__pay"
+                        :disabled="!cart.length" 
+                    >   
+                        <router-link 
+                            :event="cart.length ? 'click': ''"
+                            to="/cart/order"
+                            class="btn__pay-label"
+                        >
+                            Checkout
+                        </router-link>
+                    </button>
+                </footer>
+            </aside>
+        </div>
+    </transition>
 </template>
 
 <script>
@@ -47,6 +49,17 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+/* animations */
+.slide-right-enter-active, .slide-right-leave-active {
+  transition: all 1s ease;
+}
+
+.slide-right-enter, .slide-right-leave-to {
+  opacity: 0;
+  transform: translateX(150px);
+}
+
+/* main component styles */
 .summary {
     width: 30%;
 

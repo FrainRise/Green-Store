@@ -1,14 +1,15 @@
 <template>
-    <section>
-        <aside>
-            <h2 class="sidebar__title">
-                Filters
-            </h2>
-            <SearchProduct />
-            <FiltersList />
-        </aside>
-    </section>
-    
+    <transition name="sidebar-fade-slide" appear>
+        <section>
+            <aside>
+                <h2 class="sidebar__title">
+                    Filters
+                </h2>
+                <SearchProduct />
+                <FiltersList />
+            </aside>    
+        </section>
+    </transition>
 </template>
 
 <script>
@@ -24,6 +25,16 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+/* animations */
+.sidebar-fade-slide-enter-active, .sidebar-fade-slide-leave-active {
+  transition: all 2s ease;
+  
+}
+.sidebar-fade-slide-enter, .sidebar-fade-slide-leave-to {
+  opacity: 0;
+  transform: translateX(-150px);
+}
+/* main component styles */
 section{
     width: 30%;
     padding: 20px 0;

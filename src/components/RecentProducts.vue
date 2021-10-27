@@ -2,34 +2,39 @@
     <div class="recent-products">
         <div class="rp__wrapper container">
             <div class="rp__side-banner">
-                <img src="@/assets/side.jpg" alt="">
-                <div class="side-banner__show-more">
-                    <h2 class="show-more__title">
-                        #&nbsp;trends
-                    </h2>
-                    <router-link class="show-more__btn" to="/products">show more</router-link>
-                </div>
+                <transition name="img-slide-down" appear>
+                    <img src="@/assets/side.jpg" alt="">
+                </transition>
+                <transition name="btn-slide-right" appear>
+                    <div class="side-banner__show-more">
+                        <h2 class="show-more__title">
+                            #&nbsp;trends
+                        </h2>
+                        <router-link class="show-more__btn" to="/products">show more</router-link>
+                    </div>
+                </transition>
             </div>
             <div class="rp-list__wrapper">
                 <h2 class="rp__title">
                     Recent products
                 </h2>
                 <MyLoader v-if="!isLoaded"/>
-                <div v-else class="rp-list">
-                    <div 
-                        v-for="product in recentProducts"
-                        :key="product.id"
-                        class="rp-list__item"
-                    >
-                        <img :src="product.image" :alt="product.title">
-                        <footer>
-                            <span class="stock-marker">{{ product.rating.count > 0? "In stock": ' Out of stock' }}</span>
-                            <span class="price-marker">{{ product.price }}$</span>
-                        </footer>
+                <transition name="products-slide-left" v-else appear>
+                    <div class="rp-list">
+                        <div 
+                            v-for="product in recentProducts"
+                            :key="product.id"
+                            class="rp-list__item"
+                        >
+                            <img :src="product.image" :alt="product.title">
+                            <footer>
+                                <span class="stock-marker">{{ product.rating.count > 0? "In stock": ' Out of stock' }}</span>
+                                <span class="price-marker">{{ product.price }}$</span>
+                            </footer>
+                        </div>
                     </div>
-                </div>
+                </transition>
             </div>
-            
         </div>
     </div>
 </template>
@@ -57,15 +62,43 @@ export default {
         }),
     },
     mounted() {
-        setTimeout(() => {
-            this.fetchRecentProducts()
-            this.isLoaded = true  
-        }, 1500);
+        this.fetchRecentProducts()
+        this.isLoaded = true  
     },
 }
 </script>
 
 <style lang="scss" scoped>
+/* animations */
+.img-slide-down-enter-active, 
+.img-slide-down-leave-active,
+.btn-slide-right-enter-active,
+.btn-slide-right-leave-active {
+  transition: all 2s ease;
+  
+}
+
+.products-slide-left-enter-active,
+.products-slide-left-leave-active {
+  transition: all 3s ease;
+  
+}
+
+.img-slide-down-enter, .img-slide-down-leave-to {
+  opacity: 0;
+  transform: translateY(350px);
+}
+
+.btn-slide-right-enter, .btn-slide-right-leave-to {
+  opacity: 0;
+  transform: translateX(-250px);
+}
+
+.products-slide-left-enter, .products-slide-left-leave-to {
+  opacity: 0;
+  transform: translateX(250px);
+}
+/* main component styles */
 .rp__wrapper {
     display: flex;
     justify-content: space-around;
