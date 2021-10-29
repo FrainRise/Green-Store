@@ -199,6 +199,17 @@ export default {
         .navbar_item-wrapper {
             display: none;
             animation: slideUp .25s linear;
+
+            .navbar-link{
+                display: block;
+                width: 150px;
+                margin: 0 auto;
+
+                .products-quantity {
+                    left: 102px;
+                }
+            }
+            
         }
 
         .opened {
