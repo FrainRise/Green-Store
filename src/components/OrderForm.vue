@@ -158,9 +158,6 @@ export default {
                 alert('There is no products in your cart. Please choose something and then make an order')
             }
         }
-    },
-    mounted(){
-        console.log(this.cart.length)
     }
 }
 </script>

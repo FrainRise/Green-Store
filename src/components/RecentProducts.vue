@@ -86,7 +86,7 @@ export default {
 
 .img-slide-down-enter, .img-slide-down-leave-to {
   opacity: 0;
-  transform: translateY(350px);
+  transform: translateY(50px);
 }
 
 .btn-slide-right-enter, .btn-slide-right-leave-to {
@@ -96,7 +96,7 @@ export default {
 
 .products-slide-left-enter, .products-slide-left-leave-to {
   opacity: 0;
-  transform: translateX(250px);
+  transform: translateX(150px);
 }
 /* main component styles */
 .rp__wrapper {
