@@ -93,7 +93,6 @@ export default {
         confirmOrder() {
             this.isDataConfirmed = true
             this.$store.commit('clearCart')
-            console.log(this.$store.state.cart)
         },
         closeModal() {
             this.isDataConfirmed = false

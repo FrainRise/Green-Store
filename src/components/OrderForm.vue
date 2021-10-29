@@ -131,32 +131,37 @@ export default {
     },
     methods: {
         createOrder() {
-            let newOrder = {
-                fullname: `${this.firstname} ${this.lastname}`,
-                phoneNumber: this.phoneNumber,
-                email: this.email,
-                streetAddress: `${this.streetAddress} ${this.streetAddressSecond}`,
-                area: `${this.city} ${this.state}`,
-                zipCode: this.zipCode,
-                products: [...this.cart]
+            if(this.cart.length) {
+                let newOrder = {
+                    fullname: `${this.firstname} ${this.lastname}`,
+                    phoneNumber: this.phoneNumber,
+                    email: this.email,
+                    streetAddress: `${this.streetAddress} ${this.streetAddressSecond}`,
+                    area: `${this.city} ${this.state}`,
+                    zipCode: this.zipCode,
+                    products: [...this.cart]
+                }
+                
+                this.$store.commit('formOrder', newOrder)
+                this.$store.commit('setOrderDialog', true)
+
+                this.firstname ='',
+                this.lastname = '',
+                this.phoneNumber = '',
+                this.email ='',
+                this.streetAddress = '',
+                this.streetAddressSecond = '',
+                this.city = '',
+                this.state = '',
+                this.zipCode = ''
+            } else {
+                alert('There is no products in your cart. Please choose something and then make an order')
             }
-            
-            this.$store.commit('formOrder', newOrder)
-            this.$store.commit('setOrderDialog', true)
-
-            this.firstname ='',
-            this.lastname = '',
-            this.phoneNumber = '',
-            this.email ='',
-            this.streetAddress = '',
-            this.streetAddressSecond = '',
-            this.city = '',
-            this.state = '',
-            this.zipCode = ''
-
-            console.log(this.order)
         }
     },
+    mounted(){
+        console.log(this.cart.length)
+    }
 }
 </script>
 
