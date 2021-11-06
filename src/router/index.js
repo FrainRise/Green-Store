@@ -26,7 +26,7 @@ const routes = [
   {
     path: '/cart',
     name: 'Cart',
-    component: Cart
+    component: Cart,
   },
   {
     path: '/cart/order',

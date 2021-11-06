@@ -10,7 +10,6 @@
             <div class="burger-line"></div>
             <div class="burger-line"></div>
         </div>
-
         <ul class="navbar_item-wrapper" :class="openedList">
             <li 
                 class="item-wrapper__item"
@@ -27,7 +26,6 @@
                         @click="closeMobileMenu"
                         class="link-wrap"
                     >
-
                         {{ navItem.title }}
                         <span 
                             v-if="cartLabel(navItem)"
@@ -78,7 +76,6 @@ export default {
             // console.log(this.isBurgerActive)
         }
     },
-
 }
 </script>
 

@@ -28,7 +28,7 @@
                         >
                             <img :src="product.image" :alt="product.title">
                             <footer>
-                                <span class="stock-marker">{{ product.rating.count > 0? "In stock": ' Out of stock' }}</span>
+                                <span class="stock-marker">{{ isProductInStock(product) }}</span>
                                 <span class="price-marker">{{ product.price }}$</span>
                             </footer>
                         </div>
@@ -54,7 +54,10 @@ export default {
     methods: {
         ...mapActions({
             fetchRecentProducts: 'fetchRecentProducts'
-        })
+        }),
+        isProductInStock(product) {
+            return product.rating.count > 0? "In stock": ' Out of stock'
+        }
     },
     computed: {
         ...mapState({

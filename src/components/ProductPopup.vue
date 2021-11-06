@@ -1,47 +1,45 @@
 <template>
-<transition name="slide-fade" appear>
-    <div class="popup">
-        <header class="popup-header">
-            <h4 class="header__title"><span class="confirm-marker">&#10003;</span>Added to cart</h4>
-            <span 
-                class="close-marker"
-                @click="closePopup"
-            >
-                &#10005;
-            </span>
-        </header>
-        <section class="popup-body">
-            <div class="image-wrapper">
-                <img :src="info.image" alt="" class="product-image">
-            </div>
-            <div class="info-wrapper">
-                <h4 class="product-name info">{{ info.title }}</h4>
-                <p class="product-category info">{{ info.category }}</p>
-                <h4 class="product-price info">{{ info.price }}$</h4>
-            </div>
-        </section>
-        <footer class="popup-footer">
-            <button class="btn btn-to-cart">
-                <router-link to="/cart" class="btn-label">
-                    Move to Cart ({{cart.length}})
-                </router-link>
-            </button>
-            <button class="btn btn-to-order">
-                <router-link to="/cart/order" class="btn-label">
-                    Make Order
-                </router-link>
-            </button>
-        </footer>
-    </div>
-</transition>
-    
+    <transition name="slide-fade" appear>
+        <div class="popup">
+            <header class="popup-header">
+                <h4 class="header__title"><span class="confirm-marker">&#10003;</span>Added to cart</h4>
+                <span 
+                    class="close-marker"
+                    @click="closePopup"
+                >
+                    &#10005;
+                </span>
+            </header>
+            <section class="popup-body">
+                <div class="image-wrapper">
+                    <img :src="info.image" alt="" class="product-image">
+                </div>
+                <div class="info-wrapper">
+                    <h4 class="product-name info">{{ info.title }}</h4>
+                    <p class="product-category info">{{ info.category }}</p>
+                    <h4 class="product-price info">{{ info.price }}$</h4>
+                </div>
+            </section>
+            <footer class="popup-footer">
+                <button class="btn btn-to-cart">
+                    <router-link to="/cart" class="btn-label">
+                        Move to Cart ({{cart.length}})
+                    </router-link>
+                </button>
+                <button class="btn btn-to-order">
+                    <router-link to="/cart/order" class="btn-label">
+                        Make Order
+                    </router-link>
+                </button>
+            </footer>
+        </div>
+    </transition>
 </template>
 
 <script>
 import { mapState } from 'vuex'
 export default {
     props: ['info', 'closePopup'],
-    
     computed: {
         ...mapState({
             cart: state => state.cart

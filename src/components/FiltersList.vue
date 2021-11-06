@@ -66,7 +66,6 @@ export default {
         user-select: none;
         font-size: 20px;
 
-
         input {
             position: absolute;
             opacity: 0;
@@ -129,7 +128,6 @@ export default {
             user-select: none;
             font-size: 20px;
             margin-left: 15px;
-
 
             input {
                 position: absolute;

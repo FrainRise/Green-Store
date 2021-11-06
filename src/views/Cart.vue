@@ -64,12 +64,14 @@ export default {
     .custom-container {
         padding: 0 10px;
     }
+
     .cart {
         .cart-wrap {
             display: flex;
             flex-direction: column;
             justify-content: space-around;
         }
+
         .cart-message {
             font-size: 25px;
         }
@@ -88,6 +90,7 @@ export default {
             justify-content: space-around;
             align-items: center;
         }
+
         .cart-message {
             font-size: 25px;
         }
@@ -98,6 +101,5 @@ export default {
     .custom-container {
         padding: 50px 20px;
     }
-
 }
 </style>

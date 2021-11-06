@@ -46,7 +46,6 @@ export default {
     },
     methods: {
         handleDelete(index) {
-
             return this.$store.commit('deleteFromCart', index)
         },
         updateProductQuantity(product){

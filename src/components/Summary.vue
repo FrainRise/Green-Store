@@ -11,7 +11,6 @@
                         <h2 class="summary-title title">Total: </h2>
                         <h2 class="total-title title">{{totalSum}}$</h2>
                     </div>
-                    
                     <hr class="divine-line" />
                 </section>
                 <footer>
@@ -40,7 +39,6 @@ export default {
         ...mapState({
             cart: state => state.cart
         }),
-
         totalSum() {
             return this.cart.reduce((acc, item) => acc + item.totalPrice, 0).toFixed(2)
         }

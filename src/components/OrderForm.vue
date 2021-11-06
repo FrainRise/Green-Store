@@ -50,7 +50,6 @@
                     />
                 </div>
             </div>
-            
             <h4 class="fields-title">Address</h4>
             <div class="fields address">
                 <input 
@@ -65,7 +64,6 @@
                     class="form-input street-address-second" 
                     placeholder="Street address line 2"
                     v-model="streetAddressSecond"
-                    required
                 />
                 <div class="city-state">
                     <input 
